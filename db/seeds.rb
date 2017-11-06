@@ -20,7 +20,7 @@ end
 
 puts 'Scrapping netflix...'
 
-import = scrap("https://www.netflix.com/jp-en/originals")
+import = scrap("https://www.netflix.com/hk-en/originals")
 
 final = [] #array of result hashes
 
