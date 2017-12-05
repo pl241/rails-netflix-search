@@ -1,0 +1,52 @@
+.row-cards {
+  display: flex;
+  flex-wrap: wrap;
+  .card-wrapper {
+    background-color: white;
+    padding: 14px;
+    margin: 8px 0;
+    border: solid 1px #C4C4C4;
+    box-shadow: 2px 2px 1px #C4C4C4;
+    opacity: 1.0;
+    h2 {
+      font-size: 24px;
+      margin: 12px 0 14px 4px;
+      font-weight: bold;
+    }
+    h3 {
+      font-size: 16px;
+      margin: 10px 0;
+      font-weight: bold;
+    }
+    p {
+      font-size: 14px;
+    }
+    &:hover {
+      opacity: 0.9;
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 1px #C4C4C4;
+    }
+      .stars {
+      margin: 2px 4px 0 0;
+      // display: flex;
+      // justify-content: flex-end;
+      p {
+        margin: 0;
+      }
+        ul {
+          display: inline-block;
+          list-style: none;
+          padding: 0px;
+          display: flex;
+          justify-content: center;
+          flex-direction: row;
+          li {
+            padding-left: 2px;
+          }
+        }
+      }
+      .index-address {
+        margin: 0;
+      }
+  }
+}

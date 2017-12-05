@@ -24,7 +24,7 @@ import = scrap("https://www.netflix.com/hk-en/originals")
 
 final = [] #array of result hashes
 
-import.first(5).each do |target|
+import.first(15).each do |target|
 # import.each do |target|
 
   # target = "#realityhigh"
@@ -87,7 +87,8 @@ import.first(5).each do |target|
                           media_type: result["media_type"],
                           date: result["release_date"],
                           vote_average: result["vote_average"],
-                          popularity: result["popularity"]}
+                          popularity: result["popularity"],
+                          overview: result["overview"]}
             i += 1
 
           end
@@ -103,7 +104,8 @@ import.first(5).each do |target|
                           media_type: result["media_type"],
                           date: result["first_air_date"],
                           vote_average: result["vote_average"],
-                          popularity: result["popularity"]}
+                          popularity: result["popularity"],
+                          overview: result["overview"]}
             i += 1
           end
         end
@@ -132,7 +134,8 @@ final.each do |element|
     media_type: element[:media_type],
     release_date: element[:date],
     popularity: element[:popularity],
-    avg_vote: element[:vote_average]
+    avg_vote: element[:vote_average],
+    overview: element[:overview]
     )
 end
 

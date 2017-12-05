@@ -1,0 +1,28 @@
+
+<div class="container">
+  <div class="row show_header col-xs-12">
+    <h2><%= @video.title %></h2>
+  </div>
+
+  <div class="row showpic">
+    <%#= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fit %>
+  </div>
+
+  <div class="row">
+    <ul>
+      <%# @cocktail.doses.each do |dose| %>
+        <div class="dose">
+          <li><%= @video.overview %>
+          </li>
+        </div>
+      <%# end %>
+    </ul>
+  </div>
+
+  <div class="dose_bottom">
+    <%#= link_to "Add ingredient", new_cocktail_dose_path(@cocktail) %>
+    <br>
+    <br>
+    <%= link_to "Back to list", videos_path %>
+  </div>
+</div>

@@ -5,20 +5,21 @@
     <h1 id="header">List of Videos</h1>
   </div>
 
-  <div class="row thumb">
+  <div class="row-cards">
 
-    <% @videos.each do |video| %>
+    <% @videos.sort_by { |e| e[:avg_vote] }.reverse.each do |video| %>
 
       <div class="col-xs-12 col-sm-6 col-md-4">
-        <h3><%= video.title %></h3>
-          <%#= link_to (cl_image_tag video.photo, height: 300, width: 400, crop: :fit), video_path(video) %>
-        <p>Media type: <%= video.media_type %></p>
-        <p>Release date: <%= video.release_date %></p>
-        <p>Popularity: <%= video.popularity %></p>
-        <p>Average vote: <%= video.avg_vote %></p>
-        <br>
-        <br>
-        <p><%#= link_to "details", video_path(video) %></p>
+        <div class="card-wrapper">
+          <h3><%= video.title %></h3>
+            <%#= link_to (cl_image_tag video.photo, height: 300, width: 400, crop: :fit), video_path(video) %>
+          <p>Media type: <%= video.media_type %></p>
+          <p>Release date: <%= video.release_date %></p>
+          <p>Popularity: <%= video.popularity %></p>
+          <p>Average vote: <%= video.avg_vote %></p>
+          <!-- <p>Overview: <%#= video.overview %></p> -->
+          <p><%= link_to "details", video_path(video) %></p>
+        </div>
       </div>
 
     <% end %>

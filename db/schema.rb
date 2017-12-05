@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171023131324) do
+ActiveRecord::Schema.define(version: 20171205095219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,9 +20,10 @@ ActiveRecord::Schema.define(version: 20171023131324) do
     t.string "media_type"
     t.date "release_date"
     t.integer "popularity"
-    t.integer "avg_vote"
+    t.float "avg_vote"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "overview"
   end
 
 end
