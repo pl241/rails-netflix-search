@@ -24,7 +24,7 @@ import = scrap("https://www.netflix.com/hk-en/originals")
 
 final = [] #array of result hashes
 
-import.first(15).each do |target|
+import.first(60).each do |target|
 # import.each do |target|
 
   # target = "#realityhigh"
@@ -79,7 +79,7 @@ import.first(15).each do |target|
 
       if result["media_type"] == "movie"
         # make sure result is not nil
-        unless result["title"] == nil
+        unless result["title"] == nil || result["poster_path"] == nil
           # make sure it's exact matching name
           if result["title"].downcase == input
 
@@ -88,7 +88,8 @@ import.first(15).each do |target|
                           date: result["release_date"],
                           vote_average: result["vote_average"],
                           popularity: result["popularity"],
-                          overview: result["overview"]}
+                          overview: result["overview"],
+                          image_path: result["poster_path"]}
             i += 1
 
           end
@@ -96,7 +97,7 @@ import.first(15).each do |target|
 
       elsif result["media_type"] == "tv"
 
-        unless result["name"] == nil
+        unless result["name"] == nil || result["poster_path"] == nil
 
           if result["name"].downcase == input
 
@@ -105,7 +106,8 @@ import.first(15).each do |target|
                           date: result["first_air_date"],
                           vote_average: result["vote_average"],
                           popularity: result["popularity"],
-                          overview: result["overview"]}
+                          overview: result["overview"],
+                          image_path: result["poster_path"]}
             i += 1
           end
         end
@@ -135,7 +137,8 @@ final.each do |element|
     release_date: element[:date],
     popularity: element[:popularity],
     avg_vote: element[:vote_average],
-    overview: element[:overview]
+    overview: element[:overview],
+    image_path: element[:image_path]
     )
 end
 

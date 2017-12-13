@@ -23,12 +23,15 @@ h1, h2, h3 {
 a {
   text-decoration: none;
 }
+.top{
+  text-align: center;
+}
 .text-center {
   text-align: center;
 }
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 1250px;
+  margin: auto;
 }
 .list-inline li {
   display: inline-block;
