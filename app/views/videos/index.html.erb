@@ -9,6 +9,8 @@
     <% n = 1 %>
     <% @videos.sort_by { |e| e[:avg_vote] }.reverse.each do |video| %>
       <% if video.popularity >= 20 %>
+      <%# if video.popularity >= 0 && video.media_type == "movie" %>
+      <%# if video.popularity >= 0 && video.genre_ids.include?(99) %>
         <div class="col-xs-12 col-sm-6 col-md-4">
           <div class="card-wrapper">
             <div class="card-top">
@@ -24,6 +26,45 @@
               <div class='product-body'>
                   <%#= link_to (cl_image_tag video.photo, height: 300, width: 400, crop: :fit), video_path(video) %>
                 <p>Media type: <%= video.media_type %></p>
+                <p>Genre:
+
+                  <% genres_hash = {
+                    "28" => "Action",
+                    "12" => "Adventure",
+                    "16" => "Animation",
+                    "35" => "Comedy",
+                    "80" => "Crime",
+                    "99" => "Documentary",
+                    "18" => "Drama",
+                    "10751" => "Family",
+                    "14" => "Fantasy",
+                    "36" => "History",
+                    "27" => "Horror",
+                    "10402" => "Music",
+                    "9648" => "Mystery",
+                    "10749" => "Romance",
+                    "878" => "Science Fiction",
+                    "10770" => "TV Movie",
+                    "53" => "Thriller",
+                    "10752" => "War",
+                    "37" => "Western",
+                    "10759" => "Action & Adventure",
+                    "10762" => "Kids",
+                    "10763" => "News",
+                    "10764" => "Reality",
+                    "10765" => "Sci-Fi & Fantasy",
+                    "10766" => "Soap",
+                    "10767" => "Talk",
+                    "10768" => "War & Politics" } %>
+
+                  <% video.genre_ids.each do |id| %>
+                    <% if video.genre_ids.last == id %>
+                      <%= genres_hash[id.to_s] %>
+                    <% else %>
+                      <%= genres_hash[id.to_s] %>,
+                    <% end %>
+                  <% end %>
+                </p>
                 <p>Rating: <%= video.avg_vote %></p>
                 <p>Popularity: <%= video.popularity %></p>
                 <p>Release: <%= video.release_date %></p>

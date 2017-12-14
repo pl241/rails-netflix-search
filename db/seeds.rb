@@ -24,8 +24,8 @@ import = scrap("https://www.netflix.com/hk-en/originals")
 
 final = [] #array of result hashes
 
-import.first(60).each do |target|
-# import.each do |target|
+# import.first(60).each do |target|
+import.each do |target|
 
   # target = "#realityhigh"
   # target = "hitman’s bodyguard"
@@ -89,9 +89,9 @@ import.first(60).each do |target|
                           vote_average: result["vote_average"],
                           popularity: result["popularity"],
                           overview: result["overview"],
-                          image_path: result["poster_path"]}
+                          image_path: result["poster_path"],
+                          genre_ids: result["genre_ids"]}
             i += 1
-
           end
         end
 
@@ -107,7 +107,8 @@ import.first(60).each do |target|
                           vote_average: result["vote_average"],
                           popularity: result["popularity"],
                           overview: result["overview"],
-                          image_path: result["poster_path"]}
+                          image_path: result["poster_path"],
+                          genre_ids: result["genre_ids"]}
             i += 1
           end
         end
@@ -138,7 +139,8 @@ final.each do |element|
     popularity: element[:popularity],
     avg_vote: element[:vote_average],
     overview: element[:overview],
-    image_path: element[:image_path]
+    image_path: element[:image_path],
+    genre_ids: element[:genre_ids]
     )
 end
 
