@@ -1,6 +1,7 @@
 require 'net/http'
 require 'openssl'
 require 'json'
+require 'watir'
 require 'nokogiri'
 require 'open-uri'
 
@@ -8,23 +9,76 @@ puts 'Cleaning database...'
 Video.destroy_all
 
 def scrap(url)
+
+  signIn = {
+    email: ENV["NF_EMAIL"],
+    password: ENV["NF_PW"]
+  }
+
+  browser = Watir::Browser.new
+
+  browser.goto url
+
+  browser.text_field(:name, "email").set signIn[:email]
+  browser.text_field(:name, "password").set signIn[:password]
+  browser.button(:type, "submit").click
+
+  browser.goto ENV["NF_PAGE"]
+
+  sleep 3
+
   import_list = []
-  puts "\nSearching #{url}..."
-  doc = Nokogiri::HTML(open(url), nil, 'utf-8')
-  # scrapping movie title
-  titles = doc.xpath("//div[@class='original-title']")
-  # import title into import list in the format of an array of array
-  titles.each_with_index { |title, index| import_list[index] = [title.text] }
+
+  browser.divs(:class => "video-preload-title-label").each do |i|
+    puts i.text
+    # import_list << i.text unless i.text == ""
+    import_list << i.text unless i.text == "" || import_list.include?(i.text)
+  end
+
+  # turn each slider once at a time (need 7 times in total), then scrap
+  r = browser.divs(:class => "slider").count - 1
+
+  # for complete cycle loop 7 times
+  1.times do
+    for i in 0...r
+
+      browser.bs(:class => ["indicator-icon", "icon-rightCaret"])[i].fire_event :click
+    end
+
+    sleep 1
+
+    browser.divs(:class => "video-preload-title-label").each do |i|
+      puts i.text
+      import_list << i.text unless i.text == "" || import_list.include?(i.text)
+    end
+  end
+
+  p import_list
+  p import_list.uniq.count
+  p import_list.count
+
   return import_list
+
 end
+
+  # # Nokogiri for static page
+  # import_list = []
+  # puts "\nSearching #{url}..."
+  # doc = Nokogiri::HTML(open(url), nil, 'utf-8')
+  # # scrapping movie title
+  # titles = doc.xpath("//div[@class='original-title']")
+  # # import title into import list in the format of an array of array
+  # titles.each_with_index { |title, index| import_list[index] = [title.text] }
+  # return import_list
+  # end
 
 puts 'Scrapping netflix...'
 
-import = scrap("https://www.netflix.com/hk-en/originals")
+import = scrap("https://www.netflix.com/hk-en/login")
 
 final = [] #array of result hashes
 
-# import.first(60).each do |target|
+# import.first(10).each do |target|
 import.each do |target|
 
   # target = "#realityhigh"
@@ -39,7 +93,7 @@ import.each do |target|
   }
 
   # encoded_target = target.encode(Encoding.find('ASCII'), encoding_options)
-  encoded_target = target[0].encode(Encoding.find('ASCII'), encoding_options)
+  encoded_target = target.encode(Encoding.find('ASCII'), encoding_options)
 
   input = encoded_target.downcase
 
