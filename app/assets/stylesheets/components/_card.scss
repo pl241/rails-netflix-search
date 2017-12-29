@@ -7,7 +7,7 @@
     padding: 14px;
     margin: 8px 0;
     width: 360px;
-    height: 300px;
+    height: 310px;
     border: solid 1px #C4C4C4;
     box-shadow: 2px 2px 1px #C4C4C4;
     opacity: 1.0;
@@ -24,33 +24,6 @@
     p {
       font-size: 14px;
     }
-    // &:hover {
-    //   opacity: 0.9;
-    //   transform: translate(1px, 1px);
-    //   box-shadow: 1px 1px 1px #C4C4C4;
-    // }
-      .stars {
-      margin: 2px 4px 0 0;
-      // display: flex;
-      // justify-content: flex-end;
-      p {
-        margin: 0;
-      }
-        ul {
-          display: inline-block;
-          list-style: none;
-          padding: 0px;
-          display: flex;
-          justify-content: center;
-          flex-direction: row;
-          li {
-            padding-left: 2px;
-          }
-        }
-      }
-      .index-address {
-        margin: 0;
-      }
   }
 }
 
@@ -58,6 +31,43 @@
   display: flex;
 }
 
+.card-title {
+  flex: 1 1 auto;
+  margin-left: 10px;
+  margin-right: 20px;
+  width: 300px;
+}
+
+.card-ranking {
+    margin: 2px 0 0;
+    font-size: 23px;
+}
+
 .card-body {
   display: flex;
 }
+
+.card-image {
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-right: 27px;
+  width: 150px;
+  flex: 1 1 auto;
+}
+
+.card-info {
+  flex: 1 1 auto;
+  margin-right: 10px;
+  // width: 150px;
+  h3 {
+    font-weight: bold;
+    font-size: 23px;
+    margin-top: 0;
+  }
+  p {
+  // font-weight: lighter;
+  // color: #999999;
+  margin-bottom: 0;
+  }
+}
+

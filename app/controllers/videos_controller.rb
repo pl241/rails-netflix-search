@@ -16,7 +16,6 @@ class VideosController < ApplicationController
     @videos = @videos.where('media_type LIKE ?', params[:media_type]) if params[:media_type].present?
     @videos = @videos.where('popularity > ?', params[:popularity]) if params[:popularity].present?
     @videos = @videos.where('genre_ids @> ARRAY[?]::integer[]', params[:genre_ids]) if params[:genre_ids].present?
-    # @videos = @videos.where('(?) IN genre_ids', params[:genre_ids]) if params[:genre_ids].present?
     # @videos = @videos.where('media_type LIKE ? AND popularity > ?', params[:media_type], params[:popularity]) if params[:media_type].present? && params[:popularity].present?
 
     # @spaces = @spaces.where('city LIKE ?', params[:city]) if params[:city].present?
