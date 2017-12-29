@@ -36,19 +36,22 @@
 
 .product-image {
     border-radius: 10px;
-    margin-right: 50px;
+    margin-left: 10px;
+    margin-right: 27px;
     width: 150px;
+    flex: 1 1 auto;
 }
 
 .title {
   flex: 1 1 auto;
+  margin-left: 10px;
   margin-right: 20px;
   width: 300px;
 }
 
 .product-body {
     flex: 1 1 auto;
-    margin-right: 20px;
+    margin-right: 10px;
     // width: 150px;
 }
 
@@ -59,7 +62,7 @@
 }
 
 .product-body p {
-    font-weight: lighter;
+    // font-weight: lighter;
     // color: #999999;
     margin-bottom: 0;
 }

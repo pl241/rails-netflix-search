@@ -39,7 +39,7 @@ def scrap(url)
   r = browser.divs(:class => "slider").count - 1
 
   # for complete cycle loop 7 times
-  1.times do
+  7.times do
     for i in 0...r
 
       browser.bs(:class => ["indicator-icon", "icon-rightCaret"])[i].fire_event :click

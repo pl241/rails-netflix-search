@@ -1,0 +1,91 @@
+/*// Graphical variables
+@import "config/fonts";
+@import "config/colors";
+@import "config/bootstrap_variables";*/
+
+// External libraries
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+// Your CSS partials
+/*@import "layouts/index";*/
+@import "components/index";
+/*@import "pages/index";*/
+/*@import "spaces/index";*/
+/*@import "users/index";*/
+/*@import "conversations/index";
+@import "devise/index";
+@import "skills/new";
+@import "user_reviews/index";
+*/
+
+// Override bootstrap width setting
+/*@media (min-width: 1200px) {
+  .container {
+    width: 1250px;
+  }
+}*/
+
+body {
+  margin: 0;
+  font-family: Open-sans, sans-serif;
+  background-color: #F4F4F4;
+  font-family: Avenir, Helvetica, sans-serif;
+}
+h1, h2, h3 {
+  font-family: Avenir, Helvetica, sans-serif;
+}
+a {
+  text-decoration: none;
+}
+.index-wrapper {
+  padding: 10px;
+}
+.top{
+  text-align: center;
+}
+.text-center {
+  text-align: center;
+}
+.container {
+  max-width: 1250px;
+  margin: auto;
+}
+.list-inline li {
+  display: inline-block;
+}
+.list-inline {
+  list-style: none;
+}
+
+.index-header {
+  padding: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h1 {
+    margin: 10px 0;
+  }
+  form {
+    margin: 14px -14px 0 14px;
+    select {
+      height: 39px;
+      background-color: transparent;
+      border-radius: 1px;
+    }
+    input {
+      /*width: 100px;*/
+      width: 80px;
+      height: 39px;
+      border-radius: 3px;
+      color: #66BF92;
+      margin-bottom: 1px;
+      background-color: transparent;
+      &:hover {
+        transition: 0.3s;
+      }
+    }
+  }
+}
