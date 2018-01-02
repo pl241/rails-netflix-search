@@ -10,19 +10,19 @@
             <div class="col-xs-12 col-md-6">
               <div>
                 <%= form_tag(videos_path, method: :get, class: "text-right") do %>
-                <%= select_tag "media_type",
-                  options_for_select(@media_type,
-                  :selected => params[:media_type]),
-                   class: "form-top" %>
-                <%= select_tag "popularity",
-                  options_for_select(@popularity,
-                  :selected => params[:popularity]),
-                   class: "form-top" %>
-                <%= select_tag "genre_ids",
-                  options_for_select(@genre_ids,
-                  :selected => params[:genre_ids]),
-                  class: "form-top" %>
-                <%= submit_tag 'Search', name: nil, class: "btn btn-success" %>
+                  <%= select_tag "media_type",
+                    options_for_select(@media_type,
+                    :selected => params[:media_type]),
+                     class: "form-top" %>
+                  <%= select_tag "popularity",
+                    options_for_select(@popularity,
+                    :selected => params[:popularity]),
+                     class: "form-top" %>
+                  <%= select_tag "genre_ids",
+                    options_for_select(@genre_ids,
+                    :selected => params[:genre_ids]),
+                    class: "form-top" %>
+                  <%= submit_tag 'Filter', name: nil, class: "btn btn-success" %>
                 <% end %>
               </div>
             </div>
@@ -36,7 +36,7 @@
           <%# if video.popularity >= 0 %>
           <%# if video.popularity >= 20 && video.media_type == "movie" %>
           <%# if video.popularity >= 0 && video.genre_ids.include?(99) %>
-          <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="col-xs-12 col-sm-6 col-lg-4">
             <div class="card-wrapper">
               <div class="card-top">
                 <div class='card-title'>
@@ -50,7 +50,12 @@
                   <img src="https://image.tmdb.org/t/p/w154<%= video.image_path %>" alt=<%= video.title %> >
                 </div>
                 <div class='card-info'>
-                  <p>Media type: <%= video.media_type %></p>
+                  <% if video.media_type == "movie" %>
+                    <p>Movie <i class="fa fa-film"></i></p>
+                  <% end %>
+                  <% if video.media_type == "tv" %>
+                    <p>TV show <i class="fa fa-television"></i></p>
+                  <% end %>
                   <p>Genre:
 
                     <% genres_hash = {
@@ -90,10 +95,10 @@
                       <% end %>
                     <% end %>
                   </p>
-                  <p>Rating: <%= video.avg_vote %></p>
-                  <p>Popularity: <%= video.popularity %></p>
+                  <p>Rating: <%= video.avg_vote %> <i class="fa fa-star"></i></p>
+                  <p>Popularity: <%= video.popularity %> <i class="fa fa-level-up"></i></p>
                   <p>Release: <%= video.release_date %></p>
-                  <p><%= link_to "details", video_path(video) %></p>
+                  <p><%= link_to "synopsis", video_path(video) %></p>
                 </div>
               </div>
             </div>

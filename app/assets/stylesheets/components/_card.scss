@@ -39,8 +39,16 @@
 }
 
 .card-ranking {
-    margin: 2px 0 0;
+    width: 60px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid;
+    border-color: #767676;
     font-size: 23px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    // color: #253031;
 }
 
 .card-body {
@@ -71,3 +79,10 @@
   }
 }
 
+.fa-star {
+  color: #F4BF61;
+}
+
+.fa-level-up {
+  color: #767676;
+}
