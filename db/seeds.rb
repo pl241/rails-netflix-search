@@ -22,8 +22,8 @@ import = JSON.parse(serialized_videos)
 
 final = [] #array of result hashes
 
-import.first(5).each do |target|
-# import.each do |target|
+# import.first(5).each do |target|
+import.each do |target|
 
   # target = "#realityhigh"
   # target = "hitman’s bodyguard"
