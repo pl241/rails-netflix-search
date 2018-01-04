@@ -2,7 +2,7 @@ class VideosController < ApplicationController
 
   def index
     @media_type = [['TV or Movie', nil], ['TV show', 'tv'], ['Movie', 'movie']]
-    @popularity = [['Popularity', nil], ['> 0', 0], ['> 5', 5], ['> 10', 10], ['> 20', 20], ['> 30', 30]]
+    @popularity = [['Popularity', nil], ['> 1', 1], ['> 5', 5], ['> 10', 10], ['> 20', 20], ['> 30', 30]]
     @genre_ids = [['Genre', nil], ['Drama', 18], ['Documentary', 99], ['Comedy', 35], ['Animation', 16], ['Romance', 10749], ['Crime',80]]
 
     @videos = Video.all

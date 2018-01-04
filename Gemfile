@@ -37,6 +37,9 @@ gem 'figaro'
 gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
 gem 'watir'
+# gem 'watir-webdriver'
+# gem 'chromedriver-helper'
+# gem 'selenium-webdriver', '~> 3.4'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
