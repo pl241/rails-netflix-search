@@ -50,7 +50,7 @@ a {
 }
 .index-header {
   max-width: 1250px;
-  margin: auto;
+  margin-left: 3px;
   padding: 0px;
   display: flex;
   justify-content: space-between;
@@ -59,7 +59,7 @@ a {
     margin: 10px -10px;
   }
   form {
-    margin-top: 14px;
+    margin-top: 5px;
     // margin-right: 9px;
     select {
       height: 39px;
@@ -72,7 +72,7 @@ a {
       height: 39px;
       border-radius: 3px;
       color: white;
-      margin-top: -3px;
+      margin-top: -1px;
       // background-color: transparent;
       &:hover {
         transition: 0.3s;
