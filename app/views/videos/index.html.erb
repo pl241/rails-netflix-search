@@ -4,12 +4,12 @@
       <div class="index-header">
         <div class="container">
           <div class="row">
-            <!-- <div class="col-xs-12 col-md-6">
+            <div class="col-xs-12 col-md-6">
               <h2>Top Netflix Videos</h2>
-            </div> -->
+            </div>
             <div class="col-xs-12 col-md-6">
               <div>
-                <%= form_tag(videos_path, method: :get, class: "text-left") do %>
+                <%= form_tag(videos_path, method: :get, class: "text-right") do %>
                   <%= select_tag "media_type",
                     options_for_select(@media_type,
                     :selected => params[:media_type]),

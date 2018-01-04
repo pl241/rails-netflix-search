@@ -41,16 +41,16 @@ a {
   text-decoration: none;
 }
 .index-wrapper {
-  padding: 4px;
+  padding: 5px;
 }
 .container {
   max-width: 1250px;
   margin: auto;
-  padding: 5px;
+  padding: 0px;
 }
 .index-header {
   // padding: 14px;
-  margin-left: 6px;
+  margin-left: 14px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -58,7 +58,8 @@ a {
     margin: 10px -10px;
   }
   form {
-    margin: 7px -14px 0 -14px;
+    margin-top: 14px;
+    margin-right: 9px;
     select {
       height: 39px;
       background-color: transparent;
