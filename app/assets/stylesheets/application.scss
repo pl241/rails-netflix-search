@@ -46,9 +46,11 @@ a {
 .container {
   max-width: 1250px;
   margin: auto;
+  padding: 0px;
 }
 .index-header {
   padding: 14px;
+  margin-left: 14px;
   display: flex;
   justify-content: space-between;
   align-items: center;
