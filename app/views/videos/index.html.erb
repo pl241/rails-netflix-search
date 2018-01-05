@@ -13,15 +13,15 @@
               <%= select_tag "media_type",
                 options_for_select(@media_type,
                 :selected => params[:media_type]),
-                 class: "form-top" %>
+                 class: "drop-down" %>
               <%= select_tag "popularity",
                 options_for_select(@popularity,
                 :selected => params[:popularity]),
-                 class: "form-top" %>
+                 class: "drop-down" %>
               <%= select_tag "genre_ids",
                 options_for_select(@genre_ids,
                 :selected => params[:genre_ids]),
-                class: "form-top" %>
+                class: "drop-down" %>
               <%= submit_tag 'Filter', name: nil, class: "btn btn-success" %>
             <% end %>
           </div>
