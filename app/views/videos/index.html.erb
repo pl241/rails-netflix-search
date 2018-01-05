@@ -13,18 +13,27 @@
               <%= select_tag "media_type",
                 options_for_select(@media_type,
                 :selected => params[:media_type]),
-                 class: "drop-down",
-                  id: "first" %>
+                class: "drop-down",
+                id: "left-select" %>
+              <div class="arrow">
+                <img src="/assets/drop-down-arrow.svg" alt="arrow" id="first">
+              </div>
               <%= select_tag "popularity",
                 options_for_select(@popularity,
                 :selected => params[:popularity]),
-                 class: "drop-down",
-                 id: "second" %>
+                class: "drop-down",
+                id: "middle-select" %>
+              <div class="arrow">
+                <img src="/assets/drop-down-arrow.svg" alt="arrow" id="second">
+              </div>
               <%= select_tag "genre_ids",
                 options_for_select(@genre_ids,
                 :selected => params[:genre_ids]),
                 class: "drop-down",
-                id: "third" %>
+                id: "right-select" %>
+              <div class="arrow">
+                <img src="/assets/drop-down-arrow.svg" alt="arrow" id="third">
+              </div>
               <%= submit_tag 'Filter', name: nil, class: "btn btn-success" %>
             <% end %>
           </div>
