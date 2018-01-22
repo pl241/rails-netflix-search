@@ -53,6 +53,36 @@ def scrap(url)
     end
   end
 
+  # # go to Movies page, optional as no big difference
+  # browser.goto "https://www.netflix.com/browse/genre/34399"
+
+  # sleep 3
+
+  # # repeat scrapping sequence as above
+  # browser.divs(:class => "video-preload-title-label").each do |i|
+  #   puts i.text
+  #   # import_list << i.text unless i.text == ""
+  #   import_list << i.text unless i.text == "" || import_list.include?(i.text)
+  # end
+
+  # # turn each slider once at a time (need 7 times in total), then scrap
+  # r = browser.divs(:class => "slider").count - 1
+
+  # # for complete cycle loop 7 times
+  # 7.times do
+  #   for i in 0...r
+
+  #     browser.bs(:class => ["indicator-icon", "icon-rightCaret"])[i].fire_event :click
+  #   end
+
+  #   sleep 1
+
+  #   browser.divs(:class => "video-preload-title-label").each do |i|
+  #     puts i.text
+  #     import_list << i.text unless i.text == "" || import_list.include?(i.text)
+  #   end
+  # end
+
   p import_list
   p import_list.uniq.count
   p import_list.count
