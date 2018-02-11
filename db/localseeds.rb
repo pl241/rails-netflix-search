@@ -29,17 +29,21 @@ def scrap(url)
 
   import_list = []
 
-  browser.divs(:class => "video-preload-title-label").each do |i|
-    puts i.text
-    # import_list << i.text unless i.text == ""
-    import_list << i.text unless i.text == "" || import_list.include?(i.text)
-  end
+  # browser.divs(:class => "video-preload-title-label").each do |i|
+  #   puts i.text
+  #   # import_list << i.text unless i.text == ""
+  #   import_list << i.text unless i.text == "" || import_list.include?(i.text)
+  # end
 
   # turn each slider once at a time (need 7 times in total), then scrap
-  r = browser.divs(:class => "slider").count - 1
+  # count number of slider rows manually - 1
+  r = 38
+  # r = browser.divs(:class => "lolomoRow").count - 1
+
+  # puts r
 
   # for complete cycle loop 7 times
-  7.times do
+  8.times do
     for i in 0...r
 
       browser.bs(:class => ["indicator-icon", "icon-rightCaret"])[i].fire_event :click
