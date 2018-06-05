@@ -1,7 +1,7 @@
 require 'net/http'
 require 'openssl'
 require 'json'
-require 'watir'
+# require 'watir'
 require 'nokogiri'
 require 'open-uri'
 
