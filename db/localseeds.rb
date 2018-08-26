@@ -51,7 +51,7 @@ def scrap(url)
 
     sleep 1
 
-    browser.divs(:class => "video-preload-title-label").each do |i|
+    browser.divs(:class => "fallback-text").each do |i|
       puts i.text
       import_list << i.text unless i.text == "" || import_list.include?(i.text)
     end
