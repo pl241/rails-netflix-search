@@ -1,22 +1,124 @@
 require 'net/http'
 require 'openssl'
 require 'json'
-# require 'watir'
+require 'watir'
 require 'nokogiri'
 require 'open-uri'
 
 puts 'Cleaning database...'
 Video.destroy_all
 
+def scrap(url)
+
+  signIn = {
+    email: ENV["NF_EMAIL"],
+    password: ENV["NF_PW"]
+  }
+
+  browser = Watir::Browser.new
+
+  browser.goto url
+
+  browser.text_field(:name, "email").set signIn[:email]
+  browser.text_field(:name, "password").set signIn[:password]
+  browser.button(:type, "submit").click
+
+  browser.goto ENV["NF_PAGE"]
+
+  sleep 3
+
+  import_list = []
+
+  # browser.divs(:class => "video-preload-title-label").each do |i|
+  #   puts i.text
+  #   # import_list << i.text unless i.text == ""
+  #   import_list << i.text unless i.text == "" || import_list.include?(i.text)
+  # end
+
+  # turn each slider once at a time (need 7 times in total), then scrap
+  # count number of slider rows manually - 1
+  r = 38
+  # r = browser.divs(:class => "lolomoRow").count - 1
+
+  # puts r
+
+  # for complete cycle loop 7 times
+  8.times do
+    for i in 0...r
+
+      browser.bs(:class => ["indicator-icon", "icon-rightCaret"])[i].fire_event :click
+    end
+
+    sleep 1
+
+    browser.divs(:class => "fallback-text").each do |i|
+      puts i.text
+      import_list << i.text unless i.text == "" || import_list.include?(i.text)
+    end
+  end
+
+  # # go to Movies page, optional as no big difference
+  # browser.goto "https://www.netflix.com/browse/genre/34399"
+
+  # sleep 3
+
+  # # repeat scrapping sequence as above
+  # browser.divs(:class => "video-preload-title-label").each do |i|
+  #   puts i.text
+  #   # import_list << i.text unless i.text == ""
+  #   import_list << i.text unless i.text == "" || import_list.include?(i.text)
+  # end
+
+  # # turn each slider once at a time (need 7 times in total), then scrap
+  # r = browser.divs(:class => "slider").count - 1
+
+  # # for complete cycle loop 7 times
+  # 7.times do
+  #   for i in 0...r
+
+  #     browser.bs(:class => ["indicator-icon", "icon-rightCaret"])[i].fire_event :click
+  #   end
+
+  #   sleep 1
+
+  #   browser.divs(:class => "video-preload-title-label").each do |i|
+  #     puts i.text
+  #     import_list << i.text unless i.text == "" || import_list.include?(i.text)
+  #   end
+  # end
+
+  p import_list
+  p import_list.uniq.count
+  p import_list.count
+
+  return import_list
+
+end
+
+  # # Nokogiri for static page
+  # import_list = []
+  # puts "\nSearching #{url}..."
+  # doc = Nokogiri::HTML(open(url), nil, 'utf-8')
+  # # scrapping movie title
+  # titles = doc.xpath("//div[@class='original-title']")
+  # # import title into import list in the format of an array of array
+  # titles.each_with_index { |title, index| import_list[index] = [title.text] }
+  # return import_list
+  # end
+
+puts 'Scrapping netflix...'
+
+import = scrap("https://www.netflix.com/hk-en/login")
+
 # *************************************************************
 
-puts 'Reading JSON file to import'
+puts 'Write import to JSON file'
 
-readpath = 'videos.json'
+writepath = 'videos.json'
 
-serialized_videos = File.read(readpath)
-
-import = JSON.parse(serialized_videos)
+File.open(writepath, 'w+') do |file|
+  file.write(JSON.generate(import))
+end
 
 # *************************************************************
 
@@ -57,7 +159,7 @@ import.each do |target|
 
   output = JSON.parse(filepath)
 
-# *************************************************************
+  # *************************************************************
 
   puts 'Enquiring from moviedb...'
 
